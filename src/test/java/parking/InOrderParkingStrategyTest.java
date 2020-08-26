@@ -26,8 +26,8 @@ public class InOrderParkingStrategyTest {
         Receipt actual = inOrderParkingStrategy.park(Arrays.asList(mockedParkingLot), mockedCar);
 
         //then
-        assertEquals(actual.getCarName(), "car");
-        assertEquals(actual.getParkingLotName(), "parkinglot");
+        assertEquals("car", actual.getCarName());
+        assertEquals("parkinglot", actual.getParkingLotName());
     }
 
     @Test
@@ -45,8 +45,8 @@ public class InOrderParkingStrategyTest {
         Receipt actual = inOrderParkingStrategy.park(Arrays.asList(mockedParkingLot), mockedCar);
 
         //then
-        assertEquals(actual.getCarName(), "car");
-        assertEquals(actual.getParkingLotName(), "No Parking Lot");
+        assertEquals("car", actual.getCarName());
+        assertEquals("No Parking Lot", actual.getParkingLotName());
 
     }
 
