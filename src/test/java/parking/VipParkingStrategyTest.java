@@ -108,6 +108,15 @@ public class VipParkingStrategyTest {
          * You may refactor the code, or try to use
          * use @RunWith(MockitoJUnitRunner.class), @Mock (use Mockito, not PowerMock) and @InjectMocks
          */
+        //given
+        when(car.getName()).thenReturn("AAA");
+        when(carDao.isVip(any())).thenReturn(false);
+
+        //when
+        Boolean actual = this.vipParkingStrategy.isAllowOverPark(car);
+
+        //then
+        assertEquals(false, actual);
     }
 
     @Test
@@ -116,6 +125,8 @@ public class VipParkingStrategyTest {
          * You may refactor the code, or try to use
          * use @RunWith(MockitoJUnitRunner.class), @Mock (use Mockito, not PowerMock) and @InjectMocks
          */
+
+
     }
 
     private Car createMockCar(String carName) {
