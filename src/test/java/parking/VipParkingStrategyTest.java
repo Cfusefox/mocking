@@ -24,11 +24,11 @@ public class VipParkingStrategyTest {
     @InjectMocks
     VipParkingStrategy vipParkingStrategy;
 
-	@Test
+    @Test
     public void testPark_givenAVipCarAndAFullParkingLog_thenGiveAReceiptWithCarNameAndParkingLotName() {
 
-	    /* Exercise 4, Write a test case on VipParkingStrategy.park()
-	    * With using Mockito spy, verify and doReturn */
+        /* Exercise 4, Write a test case on VipParkingStrategy.park()
+         * With using Mockito spy, verify and doReturn */
         //given
         VipParkingStrategy vipParkingStrategy = spy(new VipParkingStrategy());
         Car mockedCar = mock(Car.class);
@@ -66,7 +66,7 @@ public class VipParkingStrategyTest {
     }
 
     @Test
-    public void testIsAllowOverPark_givenCarNameContainsCharacterAAndIsVipCar_thenReturnTrue(){
+    public void testIsAllowOverPark_givenCarNameContainsCharacterAAndIsVipCar_thenReturnTrue() {
 
         /* Exercise 5, Write a test case on VipParkingStrategy.isAllowOverPark()
          * You may refactor the code, or try to use
@@ -85,7 +85,7 @@ public class VipParkingStrategyTest {
     }
 
     @Test
-    public void testIsAllowOverPark_givenCarNameDoesNotContainsCharacterAAndIsVipCar_thenReturnFalse(){
+    public void testIsAllowOverPark_givenCarNameDoesNotContainsCharacterAAndIsVipCar_thenReturnFalse() {
 
         /* Exercise 5, Write a test case on VipParkingStrategy.isAllowOverPark()
          * You may refactor the code, or try to use
@@ -103,7 +103,7 @@ public class VipParkingStrategyTest {
     }
 
     @Test
-    public void testIsAllowOverPark_givenCarNameContainsCharacterAAndIsNotVipCar_thenReturnFalse(){
+    public void testIsAllowOverPark_givenCarNameContainsCharacterAAndIsNotVipCar_thenReturnFalse() {
         /* Exercise 5, Write a test case on VipParkingStrategy.isAllowOverPark()
          * You may refactor the code, or try to use
          * use @RunWith(MockitoJUnitRunner.class), @Mock (use Mockito, not PowerMock) and @InjectMocks
@@ -125,7 +125,15 @@ public class VipParkingStrategyTest {
          * You may refactor the code, or try to use
          * use @RunWith(MockitoJUnitRunner.class), @Mock (use Mockito, not PowerMock) and @InjectMocks
          */
+        //given
+        when(car.getName()).thenReturn("BBBB");
+        when(carDao.isVip(any())).thenReturn(false);
 
+        //when
+        Boolean actual = this.vipParkingStrategy.isAllowOverPark(car);
+
+        //then
+        assertEquals(false, actual);
 
     }
 
