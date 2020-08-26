@@ -8,8 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 public class InOrderParkingStrategyTest {
 
@@ -56,14 +55,17 @@ public class InOrderParkingStrategyTest {
 
 	    /* Exercise 2: Test park() method. Use Mockito.spy and Mockito.verify to test the situation for no available parking lot */
         //given
-//        List<ParkingLot> parkingLots = Mockito.spy(new ArrayList<>());
+        InOrderParkingStrategy inOrderParkingStrategy = spy(new InOrderParkingStrategy());
+        Car mockedCar = mock(Car.class);
+        ParkingLot mockedParkingLot = mock(ParkingLot.class);
+        when(mockedCar.getName()).thenReturn("car");
+        when(mockedParkingLot.isFull()).thenReturn(true);
 
         //when
-
-
+        inOrderParkingStrategy.park(Arrays.asList(mockedParkingLot), mockedCar);
 
         //then
-
+        verify(inOrderParkingStrategy).createNoSpaceReceipt(mockedCar);
 
     }
 
