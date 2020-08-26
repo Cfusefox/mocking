@@ -1,13 +1,28 @@
 package parking;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.runners.MockitoJUnitRunner;
 import org.powermock.api.mockito.PowerMockito;
 
 import java.util.Arrays;
 
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 
+@RunWith(MockitoJUnitRunner.class)
 public class VipParkingStrategyTest {
+
+    @Mock
+    Car car;
+
+    @Mock
+    CarDao carDao;
+
+    @InjectMocks
+    VipParkingStrategy vipParkingStrategy;
 
 	@Test
     public void testPark_givenAVipCarAndAFullParkingLog_thenGiveAReceiptWithCarNameAndParkingLotName() {
@@ -57,6 +72,16 @@ public class VipParkingStrategyTest {
          * You may refactor the code, or try to use
          * use @RunWith(MockitoJUnitRunner.class), @Mock (use Mockito, not PowerMock) and @InjectMocks
          */
+        //given
+        when(car.getName()).thenReturn("vipA");
+        when(carDao.isVip(any())).thenReturn(true);
+
+        //when
+        Boolean actual = this.vipParkingStrategy.isAllowOverPark(car);
+
+        //then
+        assertEquals(true, actual);
+
     }
 
     @Test
