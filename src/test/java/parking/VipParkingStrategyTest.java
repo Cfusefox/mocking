@@ -91,6 +91,15 @@ public class VipParkingStrategyTest {
          * You may refactor the code, or try to use
          * use @RunWith(MockitoJUnitRunner.class), @Mock (use Mockito, not PowerMock) and @InjectMocks
          */
+        //given
+        when(car.getName()).thenReturn("vip");
+        when(carDao.isVip(any())).thenReturn(true);
+
+        //when
+        Boolean actual = this.vipParkingStrategy.isAllowOverPark(car);
+
+        //then
+        assertEquals(false, actual);
     }
 
     @Test
