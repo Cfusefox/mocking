@@ -15,7 +15,19 @@ public class InOrderParkingStrategyTest {
 
 	    /* Exercise 1, Write a test case on InOrderParkingStrategy.createReceipt()
 	    * With using Mockito to mock the input parameter */
+        //given
+        InOrderParkingStrategy inOrderParkingStrategy = new InOrderParkingStrategy();
+        Car mockedCar = mock(Car.class);
+        ParkingLot mockedParkingLot = mock(ParkingLot.class);
+        when(mockedCar.getName()).thenReturn("car");
+        when(mockedParkingLot.getName()).thenReturn("parkinglot");
 
+        //when
+        Receipt actual = inOrderParkingStrategy.park(Arrays.asList(mockedParkingLot), mockedCar);
+
+        //then
+        assertEquals(actual.getCarName(), "car");
+        assertEquals(actual.getParkingLotName(), "parkinglot");
     }
 
     @Test
