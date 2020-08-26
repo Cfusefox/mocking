@@ -57,12 +57,10 @@ public class InOrderParkingStrategyTest {
         //given
         InOrderParkingStrategy inOrderParkingStrategy = spy(new InOrderParkingStrategy());
         Car mockedCar = mock(Car.class);
-        ParkingLot mockedParkingLot = mock(ParkingLot.class);
         when(mockedCar.getName()).thenReturn("car");
-        when(mockedParkingLot.isFull()).thenReturn(true);
 
         //when
-        inOrderParkingStrategy.park(Arrays.asList(mockedParkingLot), mockedCar);
+        inOrderParkingStrategy.park(Arrays.asList(), mockedCar);
 
         //then
         verify(inOrderParkingStrategy).createNoSpaceReceipt(mockedCar);
