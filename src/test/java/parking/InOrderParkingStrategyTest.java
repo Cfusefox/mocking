@@ -1,8 +1,11 @@
 package parking;
 
 import org.junit.Test;
+import org.mockito.Mockito;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
@@ -23,7 +26,7 @@ public class InOrderParkingStrategyTest {
         when(mockedParkingLot.getName()).thenReturn("parkinglot");
 
         //when
-        Receipt actual = inOrderParkingStrategy.park(Arrays.asList(mockedParkingLot), mockedCar);
+        Receipt actual = inOrderParkingStrategy.createReceipt(mockedParkingLot, mockedCar);
 
         //then
         assertEquals("car", actual.getCarName());
@@ -37,12 +40,10 @@ public class InOrderParkingStrategyTest {
          * With using Mockito to mock the input parameter */
         InOrderParkingStrategy inOrderParkingStrategy = new InOrderParkingStrategy();
         Car mockedCar = mock(Car.class);
-        ParkingLot mockedParkingLot = mock(ParkingLot.class);
         when(mockedCar.getName()).thenReturn("car");
-        when(mockedParkingLot.isFull()).thenReturn(true);
 
         //when
-        Receipt actual = inOrderParkingStrategy.park(Arrays.asList(mockedParkingLot), mockedCar);
+        Receipt actual = inOrderParkingStrategy.createNoSpaceReceipt(mockedCar);
 
         //then
         assertEquals("car", actual.getCarName());
@@ -54,6 +55,15 @@ public class InOrderParkingStrategyTest {
     public void testPark_givenNoAvailableParkingLot_thenCreateNoSpaceReceipt(){
 
 	    /* Exercise 2: Test park() method. Use Mockito.spy and Mockito.verify to test the situation for no available parking lot */
+        //given
+//        List<ParkingLot> parkingLots = Mockito.spy(new ArrayList<>());
+
+        //when
+
+
+
+        //then
+
 
     }
 
